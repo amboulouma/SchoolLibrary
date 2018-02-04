@@ -5,6 +5,8 @@
  */
 package schoollibrary;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -30,6 +33,9 @@ import javax.persistence.Table;
     , @NamedQuery(name = "Books.findByTitle", query = "SELECT b FROM Books b WHERE b.title = :title")
     , @NamedQuery(name = "Books.findByEdition", query = "SELECT b FROM Books b WHERE b.edition = :edition")})
 public class Books implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,7 +63,9 @@ public class Books implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getTitle() {
@@ -65,7 +73,9 @@ public class Books implements Serializable {
     }
 
     public void setTitle(String title) {
+        String oldTitle = this.title;
         this.title = title;
+        changeSupport.firePropertyChange("title", oldTitle, title);
     }
 
     public String getEdition() {
@@ -73,7 +83,9 @@ public class Books implements Serializable {
     }
 
     public void setEdition(String edition) {
+        String oldEdition = this.edition;
         this.edition = edition;
+        changeSupport.firePropertyChange("edition", oldEdition, edition);
     }
 
     public Authors getAuthor() {
@@ -81,7 +93,9 @@ public class Books implements Serializable {
     }
 
     public void setAuthor(Authors author) {
+        Authors oldAuthor = this.author;
         this.author = author;
+        changeSupport.firePropertyChange("author", oldAuthor, author);
     }
 
     @Override
@@ -107,6 +121,14 @@ public class Books implements Serializable {
     @Override
     public String toString() {
         return "schoollibrary.Books[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

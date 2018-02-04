@@ -130,7 +130,7 @@ public class Authors implements Serializable {
 
     @Override
     public String toString() {
-        return "schoollibrary.Authors[ id=" + id + " ]";
+        return this.surname + " " + this.firstname;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

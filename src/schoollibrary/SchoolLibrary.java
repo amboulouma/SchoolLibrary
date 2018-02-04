@@ -15,8 +15,8 @@ public class SchoolLibrary {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AddAuthor aa = new AddAuthor();
-        aa.setVisible(true);
+        AddBook ab = new AddBook();
+        ab.setVisible(true);
     }
     
 }
