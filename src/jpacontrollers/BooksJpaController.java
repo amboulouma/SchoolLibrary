@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package schoollibrary;
+package jpacontrollers;
 
+import entities.Books;
+import entities.Authors;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;

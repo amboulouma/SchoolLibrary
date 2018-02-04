@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package schoollibrary;
+package forms;
 
 /**
  *
@@ -110,7 +110,7 @@ public class ShowAuthors extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager SchoolLibraryPUEntityManager;
-    private java.util.List<schoollibrary.Authors> authorsList;
+    private java.util.List<entities.Authors> authorsList;
     private javax.persistence.Query authorsQuery;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

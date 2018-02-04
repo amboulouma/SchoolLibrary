@@ -1,7 +1,10 @@
-package schoollibrary;
+package forms;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import entities.Authors;
+import entities.Books;
+import jpacontrollers.BooksJpaController;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -174,8 +177,8 @@ public class AddBook extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager SchoolLibraryPUEntityManager;
-    private java.util.List<schoollibrary.Authors> authorsList;
-    private java.util.List<schoollibrary.Authors> authorsList1;
+    private java.util.List<entities.Authors> authorsList;
+    private java.util.List<entities.Authors> authorsList1;
     private javax.persistence.Query authorsQuery;
     private javax.persistence.Query authorsQuery1;
     private javax.swing.JButton jButton1;

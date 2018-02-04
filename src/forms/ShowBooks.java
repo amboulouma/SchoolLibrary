@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package schoollibrary;
+package forms;
+
+import forms.AddBook;
 
 /**
  *
@@ -46,7 +48,7 @@ public class ShowBooks extends javax.swing.JFrame {
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${author}"));
         columnBinding.setColumnName("Author");
-        columnBinding.setColumnClass(schoollibrary.Authors.class);
+        columnBinding.setColumnClass(entities.Authors.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
 
@@ -132,7 +134,7 @@ public class ShowBooks extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager SchoolLibraryPUEntityManager;
-    private java.util.List<schoollibrary.Books> booksList;
+    private java.util.List<entities.Books> booksList;
     private javax.persistence.Query booksQuery;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
