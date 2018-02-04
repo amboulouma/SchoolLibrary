@@ -116,6 +116,9 @@ public class AddAuthor extends javax.swing.JFrame {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("SchoolLibraryPU");
         AuthorsJpaController ajc = new AuthorsJpaController(emf);
         ajc.create(a1);
+        
+        ShowAuthors sa = new ShowAuthors();
+        sa.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

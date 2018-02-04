@@ -5,6 +5,8 @@
  */
 package schoollibrary;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -17,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -31,6 +34,9 @@ import javax.persistence.Table;
     , @NamedQuery(name = "Authors.findBySurname", query = "SELECT a FROM Authors a WHERE a.surname = :surname")
     , @NamedQuery(name = "Authors.findByEmail", query = "SELECT a FROM Authors a WHERE a.email = :email")})
 public class Authors implements Serializable {
+
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,7 +65,9 @@ public class Authors implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getFirstname() {
@@ -67,7 +75,9 @@ public class Authors implements Serializable {
     }
 
     public void setFirstname(String firstname) {
+        String oldFirstname = this.firstname;
         this.firstname = firstname;
+        changeSupport.firePropertyChange("firstname", oldFirstname, firstname);
     }
 
     public String getSurname() {
@@ -75,7 +85,9 @@ public class Authors implements Serializable {
     }
 
     public void setSurname(String surname) {
+        String oldSurname = this.surname;
         this.surname = surname;
+        changeSupport.firePropertyChange("surname", oldSurname, surname);
     }
 
     public String getEmail() {
@@ -83,7 +95,9 @@ public class Authors implements Serializable {
     }
 
     public void setEmail(String email) {
+        String oldEmail = this.email;
         this.email = email;
+        changeSupport.firePropertyChange("email", oldEmail, email);
     }
 
     public Collection<Books> getBooksCollection() {
@@ -117,6 +131,14 @@ public class Authors implements Serializable {
     @Override
     public String toString() {
         return "schoollibrary.Authors[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

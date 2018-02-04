@@ -15,7 +15,8 @@ public class SchoolLibrary {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        AddAuthor aa = new AddAuthor();
+        aa.setVisible(true);
     }
     
 }
