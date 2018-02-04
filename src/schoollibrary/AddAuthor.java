@@ -5,6 +5,9 @@
  */
 package schoollibrary;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author amine
@@ -105,7 +108,14 @@ public class AddAuthor extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Authors a1 = new Authors();
+        a1.setFirstname(jTextField1.getText());
+        a1.setSurname(jTextField2.getText());
+        a1.setEmail(jTextField3.getText());
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("SchoolLibraryPU");
+        AuthorsJpaController ajc = new AuthorsJpaController(emf);
+        ajc.create(a1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
